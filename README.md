@@ -7,3 +7,8 @@ https://medium.com/hprog99/mastering-spring-data-jpa-specifications-for-robust-d
 
 The original idea is from  
 https://blog.devgenius.io/spring-data-jpa-with-specifications-and-json-columns-3c172411d702
+
+# Specification + Projection
+
+I could not make it work yet. The example here does not work
+https://medium.com/hprog99/mastering-spring-data-jpa-specifications-for-robust-data-access-24e7626d169a
