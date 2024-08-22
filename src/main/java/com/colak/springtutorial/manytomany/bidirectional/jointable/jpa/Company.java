@@ -1,4 +1,4 @@
-package com.colak.springjpaspecificationstutorial.manytomany.bidirectional.jointable.jpa;
+package com.colak.springtutorial.manytomany.bidirectional.jointable.jpa;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;

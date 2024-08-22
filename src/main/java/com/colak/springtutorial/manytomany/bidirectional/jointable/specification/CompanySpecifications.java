@@ -1,15 +1,17 @@
-package com.colak.springjpaspecificationstutorial.manytomany.bidirectional.jointable.specification;
+package com.colak.springtutorial.manytomany.bidirectional.jointable.specification;
 
-import com.colak.springjpaspecificationstutorial.manytomany.bidirectional.jointable.jpa.Company;
-import com.colak.springjpaspecificationstutorial.manytomany.bidirectional.jointable.jpa.Project;
+import com.colak.springtutorial.manytomany.bidirectional.jointable.jpa.Company;
+import com.colak.springtutorial.manytomany.bidirectional.jointable.jpa.Project;
 import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Predicate;
+import lombok.experimental.UtilityClass;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
 import java.util.Locale;
 
+@UtilityClass
 public class CompanySpecifications {
 
     /**

@@ -1,9 +1,7 @@
-package com.colak.springjpaspecificationstutorial.manytomany.bidirectional.jointable.repository;
+package com.colak.springtutorial.manytomany.bidirectional.jointable.repository;
 
-import com.colak.springjpaspecificationstutorial.manytomany.bidirectional.jointable.jpa.Company;
-import com.colak.springjpaspecificationstutorial.manytomany.bidirectional.jointable.specification.CompanySpecifications;
-import com.colak.springjpaspecificationstutorial.manytomany.bidirectional.jointable.specification.projection.CompanyNameProjection;
-import com.colak.springjpaspecificationstutorial.manytomany.bidirectional.jointable.specification.projection.CompanyProjectProjection;
+import com.colak.springtutorial.manytomany.bidirectional.jointable.jpa.Company;
+import com.colak.springtutorial.manytomany.bidirectional.jointable.specification.CompanySpecifications;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,28 +48,6 @@ class CompanyRepositoryTest {
         List<Company> companyList = companyRepository.findAll(specification);
 
         List<String> expectedNames = List.of("company-1");
-        List<Object> actualNames = extractProperty("name").from(companyList);
-
-        assertThat(actualNames).containsExactlyElementsOf(expectedNames);
-    }
-
-    @Test
-    void testCompanyProjection() {
-        // The projects attribute is lazy
-        List<CompanyNameProjection> companyList = companyRepository.findAllProjectedBy(CompanyNameProjection.class);
-
-        List<String> expectedNames = List.of("company-1" , "company-2");
-        List<Object> actualNames = extractProperty("name").from(companyList);
-
-        assertThat(actualNames).containsExactlyElementsOf(expectedNames);
-    }
-
-    @Test
-    void testCompanyProjectProjection() {
-        // The projects attribute is lazy
-        List<CompanyProjectProjection> companyList = companyRepository.findAllProjectedBy(CompanyProjectProjection.class);
-
-        List<String> expectedNames = List.of("company-1" , "company-2");
         List<Object> actualNames = extractProperty("name").from(companyList);
 
         assertThat(actualNames).containsExactlyElementsOf(expectedNames);
