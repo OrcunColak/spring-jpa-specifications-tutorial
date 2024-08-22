@@ -38,5 +38,6 @@ public class Company {
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "company_project_mapping", joinColumns = @JoinColumn(name = "company_id"),
             inverseJoinColumns = @JoinColumn(name = "project_id"))
+    @ToString.Exclude
     private Set<Project> projects;
 }
