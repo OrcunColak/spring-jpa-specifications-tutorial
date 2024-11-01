@@ -24,11 +24,17 @@ public class CompanySpecifications {
     public static Specification<Company> hasNameLike(String name) {
         return (root, query, criteriaBuilder) -> {
             String upperCaseName = name.toUpperCase(Locale.ROOT);
-            Predicate predicate = criteriaBuilder.like(criteriaBuilder.upper(root.get("name")), "%" + upperCaseName + "%");
+            Predicate predicate = criteriaBuilder.like(criteriaBuilder.upper(root.get("name")), likePattern(upperCaseName));
+            assert query != null;
+
             // we can also use an orderBy in the Specification
             query.orderBy(criteriaBuilder.asc(root.get("id")));
             return predicate;
         };
+    }
+
+    private static String likePattern(String value) {
+        return "%" + value + "%";
     }
 
     /**
@@ -48,6 +54,8 @@ public class CompanySpecifications {
     public static Specification<Company> hasAtLeastProjects(int minProjects) {
         return (root, query, criteriaBuilder) -> {
             Join<Company, Project> projects = root.join("projects");
+            assert query != null;
+
             query.groupBy(root.get("id"));
             Expression<Long> projectCount = criteriaBuilder.count(projects);
             criteriaBuilder.greaterThanOrEqualTo(projectCount, Long.valueOf(minProjects));
